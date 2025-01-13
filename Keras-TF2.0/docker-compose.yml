@@ -1,0 +1,27 @@
+version: "2.3"
+services:
+  kaushik_mask_classifier_training_vgg16:
+    image: tensorflow_keras_cuda10_ubuntu1804_cudnn7:latest
+    container_name: kaushik_mask_classifier_training_vgg16
+    runtime: nvidia
+    privileged: true
+    ipc: host
+    devices: # required
+      - /dev/mem:/dev/mem
+    cap_add: # required
+      - SYS_RAWIO
+    tty: true
+    # restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+      - ./mask_classifier_train:/opt/mask_classifier_train
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+    working_dir: /opt/mask_classifier_train
+    command: bash -lc "ls -lh && nvidia-smi -l"
+    #command: bash -lc "CUDA_VISIBLE_DEVICES=0 /usr/bin/python3 scripts/train.py | tee train.log"
+

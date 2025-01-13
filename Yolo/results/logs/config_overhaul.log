@@ -1,0 +1,12 @@
+[INFO]... Updating the config file
+[INFO]... Training will start for  yolo-v3-tiny
+	 Updataing model size as per specified
+	 Updataing Learning Rate as per specified
+	 Updataing Maxx Epochs as per specified
+	 Updataing Steps as per specified
+	 Updataing Sclaes per steps as per specified
+	 Updataing the Yolo Layer 1 as per  yolo-v3-tiny  Model Architecture
+	 Updataing the Yolo Layer 2 as per  yolo-v3-tiny  Model Architecture
+[INFO]... Updating the data file
+[INFO]... Updating the class list file
+[INFO]... Completed Updating all the necessary files

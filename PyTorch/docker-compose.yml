@@ -1,0 +1,27 @@
+version: "2.3"
+services:
+  kaushik_pyTorch_resnet18:
+    image: pytorch_mxnet_onnx:latest
+    container_name: kaushik_pyTorch_resnet18
+    runtime: nvidia
+    privileged: true
+    ipc: host
+    devices: # required
+      - /dev/mem:/dev/mem
+    cap_add: # required
+      - SYS_RAWIO
+    tty: true
+    # restart: always
+    volumes:
+      - /etc/hosts:/etc/hosts
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+      - ../data:/opt/imagenet/data
+      - ./imagenet:/opt/imagenet
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+    working_dir: /opt/imagenet
+    command: bash -lc "ls -lh && nvidia-smi -l"
+    #command: bash -lc "sh start.sh"

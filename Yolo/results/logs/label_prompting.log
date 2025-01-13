@@ -1,0 +1,12 @@
+cat: 2007_train.txt: No such file or directory
+cat: 2007_val.txt: No such file or directory
+cat: 2012_train.txt: No such file or directory
+cat: 2012_val.txt: No such file or directory
+cat: 2007_train.txt: No such file or directory
+cat: 2007_val.txt: No such file or directory
+cat: 2007_test.txt: No such file or directory
+cat: 2012_train.txt: No such file or directory
+cat: 2012_val.txt: No such file or directory
+['diningtable', 'chair', 'aeroplane', 'sofa', 'person', 'car', 'bus', 'cat', 'sheep', 'bottle', 'tvmonitor', 'horse', 'cow', 'motorbike', 'bird', 'train', 'dog', 'bicycle', 'boat', 'pottedplant']
+[INFO]... Done with data refinement...!!
+[INFO]... Splitting the refined data...!!

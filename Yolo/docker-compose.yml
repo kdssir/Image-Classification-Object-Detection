@@ -1,0 +1,29 @@
+version: "2.3"
+services:
+  kaushik_yolo_training:
+    image: yolo_training_kaushik:latest
+    container_name: kaushik_yolo_training
+    runtime: nvidia
+    privileged: true
+    ipc: host
+    devices: # required
+      - /dev/mem:/dev/mem
+    cap_add: # required
+      - SYS_RAWIO
+    tty: true
+    # restart: always
+    volumes:
+      - ./results/weights:/opt/darknet/backup_test
+      - /home/kaushik/Documents/VOCdevkit/VOC2007:/opt/darknet/VOCdevkit/VOC2007
+      - ./results/logs:/opt/darknet/logs
+      - ./src/yolo_trainer.sh:/opt/training_scripts/yolo_trainer.sh
+      - ./src/label_prompting.py:/opt/training_scripts/label_prompting.py
+      - ./results/release:/opt/darknet/exported_model
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+    working_dir: /opt/darknet
+    # command: bash -lc "ls -lh && nvidia-smi -l"
+    command: bash -lc "sh /opt/training_scripts/yolo_trainer.sh"
